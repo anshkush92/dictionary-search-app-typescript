@@ -1,22 +1,13 @@
 // Test -------------------------- Importing the Packages ---------------------------------
-import React, { useContext } from "react";
+import React from "react";
 
 // Test -------------------------- Importing the styles / other components ----------------
-import { Typography } from "@mui/material";
-import WordContext from "../../context/word-context";
+import { wordContext } from '../models/word-context-provider.type';
 
 // Test -------------------------- Structure of Props ----------------------------------
 
 // Test -------------------------- The current component ----------------------------------
-const Heading = () => {
-  const { word } = useContext(WordContext);
-
-  return (
-    <Typography variant="h1" align="center" gutterBottom>
-      {word ? word : "Word Hunt"}
-    </Typography>
-  );
-};
+const WordContext = React.createContext({} as wordContext);
 
 // Test -------------------------- Exporting the current component ------------------------
-export default Heading;
+export default WordContext;

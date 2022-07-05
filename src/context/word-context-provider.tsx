@@ -1,22 +1,22 @@
 // Test -------------------------- Importing the Packages ---------------------------------
-import React, { useContext } from "react";
+import { useState } from "react";
 
 // Test -------------------------- Importing the styles / other components ----------------
-import { Typography } from "@mui/material";
-import WordContext from "../../context/word-context";
+import WordContext from "./word-context";
 
 // Test -------------------------- Structure of Props ----------------------------------
+import { wordContextProviderProps } from "../models/word-context-provider.type";
 
 // Test -------------------------- The current component ----------------------------------
-const Heading = () => {
-  const { word } = useContext(WordContext);
+const WordContextProvider = (props: wordContextProviderProps) => {
+  const [word, setWord] = useState<string>("");
 
   return (
-    <Typography variant="h1" align="center" gutterBottom>
-      {word ? word : "Word Hunt"}
-    </Typography>
+    <WordContext.Provider value={{ word, setWord }}>
+      {props.children}
+    </WordContext.Provider>
   );
 };
 
 // Test -------------------------- Exporting the current component ------------------------
-export default Heading;
+export default WordContextProvider;

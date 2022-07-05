@@ -1,16 +1,20 @@
 // Test -------------------------- Importing the Packages ---------------------------------
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import { TextField } from "@mui/material";
 
 // Test -------------------------- Importing the styles / other components ----------------
+// Styles
+import "../LSC.css";
+
+// Compnents
+import WordContext from "../../../context/word-context";
 import { DictionaryApi } from "../../../utilities/DictionaryApi";
 
 // Test -------------------------- Structure of Props ----------------------------------
-import { LangSearch } from "../../../models/language-search.type";
 
 // Test -------------------------- The current component ----------------------------------
-const Search = (props: LangSearch) => {
-  const [word, setWord] = useState<React.ReactNode>(null);
+const Search = () => {
+  const { word, setWord } = useContext(WordContext);
 
   const enteredWord = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -35,8 +39,10 @@ const Search = (props: LangSearch) => {
 
   return (
     <TextField
+      className="width-language-select"
       variant="standard"
       label="Search A Word"
+      value={word}
       onChange={enteredWord}
     ></TextField>
   );

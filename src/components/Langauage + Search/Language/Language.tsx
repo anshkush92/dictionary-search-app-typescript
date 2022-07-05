@@ -1,23 +1,39 @@
 // Test -------------------------- Importing the Packages ---------------------------------
-
-// Test -------------------------- Importing the styles / other components ----------------
+import { useState } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 
+// Test -------------------------- Importing the styles / other components ----------------
+// Styles
+import "../LSC.css";
+
 // Test -------------------------- Structure of Props ----------------------------------
-import { LangSearch } from "../../../models/language-search.type";
 import { languages } from "../../../models/languages";
+import { languagesType } from "../../../models/language-search.type";
 
 // Test -------------------------- The current component ----------------------------------
-const Language = (props: LangSearch) => {
+const Language = () => {
+  const [language, setLanguage] = useState<languagesType>(languages[0]);
+
+  const onChangeHandler = (
+    event: React.SyntheticEvent<Element, Event>,
+    newValue: languagesType | null
+  ) => {
+    newValue = newValue || languages[0];
+    setLanguage(newValue);
+    console.log(language);
+  };
+
   return (
     <Autocomplete
+      className="width-language-select"
       disablePortal
       id="combo-box-demo"
       options={languages}
-      sx={{ width: 250 }}
       renderInput={(params) => (
         <TextField {...params} label="Languages"></TextField>
       )}
+      value={language}
+      onChange={onChangeHandler}
     ></Autocomplete>
   );
 };
