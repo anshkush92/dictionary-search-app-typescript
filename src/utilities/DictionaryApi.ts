@@ -10,9 +10,15 @@ export const DictionaryApi = async (
     },
   };
 
-  const response = await fetch(requestUrl, parameters);
-  console.log(response);
-
-  const data = await response.json();
-  console.log(data);
+  try {
+    const response = await fetch(requestUrl, parameters);
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    }
+    return null;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 };

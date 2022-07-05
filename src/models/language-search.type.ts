@@ -1,3 +1,5 @@
+import { Api } from "./api.type";
+
 export type LanguageProps = {
   className?: string;
   children?: React.ReactNode;
@@ -8,7 +10,7 @@ export type SearchProps = {
   className?: string;
   children?: React.ReactNode;
   language: string;
-  getData: (data: React.ReactNode) => void;
+  getData: (data: Api[] | null) => void;
 };
 
 export type languagesType = {
@@ -19,5 +21,5 @@ export type languagesType = {
 export type OutputProps = {
   className?: string;
   children?: React.ReactNode;
-  data?: React.ReactNode;
+  data?: Api[] | null;
 };

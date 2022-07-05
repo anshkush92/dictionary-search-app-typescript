@@ -1,0 +1,11 @@
+.output-container {
+  background-color: beige;
+  color: black;
+  margin: 10px 0px;
+}
+
+.output {
+  color: black;
+  overflow-y: scroll;
+  scrollbar-width: 100px;
+}

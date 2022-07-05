@@ -14,7 +14,7 @@ import { DictionaryApi } from "../../../utilities/DictionaryApi";
 import { SearchProps } from "../../../models/language-search.type";
 
 // Test -------------------------- The current component ----------------------------------
-const Search = ({ language }: SearchProps) => {
+const Search = ({ language, getData }: SearchProps) => {
   const { word, setWord } = useContext(WordContext);
 
   const enteredWord = (
@@ -25,15 +25,17 @@ const Search = ({ language }: SearchProps) => {
 
   useEffect(() => {
     const request = async () => {
+      console.log(word, language);
       if (word) {
-        await DictionaryApi(word, language);
+        const data = await DictionaryApi(word, language);
+        getData(data);
       }
     };
 
     // Sending request for every search which we don't want :(
     // We should create a debounce function to tackle this
     request();
-  }, [word, language]);
+  }, [word, language, getData]);
 
   return (
     <TextField
