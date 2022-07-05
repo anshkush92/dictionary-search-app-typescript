@@ -9,6 +9,11 @@
   width: 40%;
 }
 
+.output-container {
+  display: flex;
+  color: black;
+}
+
 @media (max-width: 600px) {
   .language-search-container {
     flex-direction: column;

@@ -1,5 +1,8 @@
-export const DictionaryApi = async (searchedWord: React.ReactNode) => {
-  const requestUrl: string = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchedWord}`;
+export const DictionaryApi = async (
+  searchedWord: React.ReactNode,
+  language: string
+) => {
+  const requestUrl: string = `https://api.dictionaryapi.dev/api/v2/entries/${language}/${searchedWord}`;
   const parameters = {
     method: "GET",
     headers: {
